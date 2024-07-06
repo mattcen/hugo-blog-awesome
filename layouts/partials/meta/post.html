@@ -50,7 +50,7 @@
         "dateModified": "{{ dateFormat "2006-01-02T15:04:05Z0700" .Lastmod }}",
         "image": {
         "@type": "imageObject",
-        "url": "{{ with .Params.image }}{{ .Permalink }}{{ end }}"
+        "url": "{{ with .Params.image }}{{ . | absURL }}{{ end }}"
         },
         "publisher": {
         "@type": "Organization",

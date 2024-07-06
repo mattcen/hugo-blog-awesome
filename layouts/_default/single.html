@@ -4,12 +4,16 @@
         <article>
             <header class="header">
                 <h1 class="header-title">{{ .Title }}</h1>
-                {{ with .Date }}
-                {{ $ISO_time := dateFormat "2006-01-02T15:04:05-07:00" . }}
+                {{ $ISO_time_created := dateFormat "2006-01-02T15:04:05-07:00" .Date }}
+                {{ $ISO_time_lastmod := dateFormat "2006-01-02T15:04:05-07:00" .Lastmod }}
                 <div class="post-meta">
-                    <time datetime="{{ $ISO_time }}" itemprop="datePublished"> {{ . | time.Format ":date_medium" }} </time>
+                    <time datetime="{{ $ISO_time_created }}" itemprop="datePublished">{{ .Date | time.Format ":date_medium" }}</time>
+                    {{ if lt .Date .Lastmod }}
+                    (Last updated: <time datetime="{{ $ISO_time_lastmod }}" itemprop="dateModified">{{ .Lastmod | time.Format ":date_medium" }}</time>)
+                    {{ else }}
+                    <time datetime="{{ $ISO_time_lastmod }}" itemprop="dateModified"></time>
+                    {{ end }}
                 </div>
-                {{ end }}
             </header>
             {{ partial "toc.html" .}}
             <div class="page-content">

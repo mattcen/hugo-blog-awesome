@@ -43,11 +43,11 @@
         "@type": "Person",
         "name": "{{ .Site.Params.github }}"
         },
-        "datePublished": "{{ dateFormat "2006-01-02" .Date }}",
+        "datePublished": "{{ dateFormat "2006-01-02T15:04:05Z0700" .Date }}",
         "description": {{ .Description }},
         "wordCount": {{ .WordCount }},
         "mainEntityOfPage": "True",
-        "dateModified": "{{ dateFormat "2006-01-02" .Lastmod }}",
+        "dateModified": "{{ dateFormat "2006-01-02T15:04:05Z0700" .Lastmod }}",
         "image": {
         "@type": "imageObject",
         "url": "{{ with .Params.image }}{{ .Permalink }}{{ end }}"

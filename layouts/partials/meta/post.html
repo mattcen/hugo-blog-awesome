@@ -22,6 +22,7 @@
     <meta property="article:published_time" content={{ $ISO_date | safeHTML }} />
     <meta property="og:article:modified_time" content={{ $ISO_date_mod | safeHTML }} />
     <meta property="article:modified_time" content={{ $ISO_date_mod | safeHTML }} />
+    <meta property="og:url" content="{{ .Permalink }}" />
 
     {{ with.Site.Params.author }}
     <meta property="og:article:author" content="{{ .name }}" />
